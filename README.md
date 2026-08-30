@@ -3,7 +3,9 @@
 Plataforma educacional para agendamento, acompanhamento e organização de provas e rotinas de estudo com perfis dedicados para Professores e Alunos.
 -----
 ## Organização do projeto
-´´text
+## 📁 Estrutura de Pastas do Projeto
+
+```text
 meu-projeto/
 ├── apps/
 │   ├── api/                          # Backend (NestJS)
@@ -39,7 +41,7 @@ meu-projeto/
 │       └── tsconfig.json
 ├── package.json                      # Workspaces de orquestração
 └── README.md
-´´´
+```
 ---
 
 ## 🛠️ Stack Tecnológica
