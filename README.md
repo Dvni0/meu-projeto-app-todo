@@ -1,6 +1,43 @@
 # Sistema de Gestão de Avaliações e Estudos
 
 Plataforma educacional para agendamento, acompanhamento e organização de provas e rotinas de estudo com perfis dedicados para Professores e Alunos.
+-----
+## Organização do projeto
+meu-projeto/
+├── apps/
+│   ├── api/                          # Backend (NestJS)
+│   │   ├── src/
+│   │   │   ├── modules/              # Módulos de domínio
+│   │   │   │   ├── auth/             # Gestão de usuários e autenticação
+│   │   │   │   ├── classrooms/       # Gestão de turmas
+│   │   │   │   ├── exams/            # Cadastro e listagem de avaliações
+│   │   │   │   ├── checklists/       # Subtarefas de estudo
+│   │   │   │   └── notifications/    # Notificações e agendamentos
+│   │   │   │       ├── controllers/  # [C] Tratam requisições HTTP e rotas
+│   │   │   │       ├── services/     # Regras de negócio da aplicação
+│   │   │   │       ├── models/       # [M] Entidades do banco de dados
+│   │   │   │       └── dtos/         # Validação de dados de entrada/saída
+│   │   │   ├── common/               # Guards, Interceptors, Filters globais
+│   │   │   ├── config/               # Variáveis de ambiente e banco
+│   │   │   └── main.ts
+│   │   ├── test/                     # Testes e2e e unitários
+│   │   └── tsconfig.json
+│   │
+│   └── web/                          # Frontend (React + TypeScript)
+│       ├── public/                   # Manifest PWA, ícones e assets estáticos
+│       ├── src/
+│       │   ├── assets/               # Imagens, estilos globais e fontes
+│       │   ├── components/           # [V] Componentes reutilizáveis (UI)
+│       │   ├── pages/                # [V] Telas da aplicação (Professor/Aluno)
+│       │   ├── hooks/                # [C] Controladores de estado e fluxo de dados
+│       │   ├── services/             # [M] Integração com API / Chamadas Axios/Fetch
+│       │   ├── types/                # [M] Tipagens e interfaces de domínio
+│       │   ├── context/              # Gestão de estado global (Auth, Theme)
+│       │   ├── routes/               # Configuração do React Router
+│       │   └── main.tsx
+│       └── tsconfig.json
+├── package.json                      # Workspaces de orquestração
+└── README.md
 
 ---
 
