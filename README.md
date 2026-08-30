@@ -61,3 +61,4 @@ Plataforma educacional para agendamento, acompanhamento e organização de prova
 ### 1. Clonar o repositório
 ```bash
 git clone https://github.com/Dvni0/meu-projeto-app-todo
+cd meu-projeto-app-todo
