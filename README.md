@@ -149,5 +149,4 @@ apps/
   api/   API NestJS, módulos, testes e configuração do PostgreSQL
   web/   frontend React, telas, estilos e cliente HTTP
 ```
-git clone https://github.com/Dvni0/meu-projeto-app-todo
-cd meu-projeto-app-todo
+
