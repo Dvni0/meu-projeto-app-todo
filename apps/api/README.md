@@ -23,13 +23,38 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+API REST NestJS para a plataforma de provas e estudos, com persistencia PostgreSQL, autenticacao JWT e perfis de aluno e professor. O schema inicial e criado ao iniciar a aplicacao.
 
-## Project setup
+## Execucao local
+
+Requer Node.js 18+ e Docker (ou um servidor PostgreSQL). Execute na pasta `apps/api`:
 
 ```bash
-$ npm install
+cp .env.example .env
+docker compose up -d
+npm run start:dev
 ```
+
+Configure um `JWT_SECRET` aleatorio com pelo menos 32 bytes no `.env`. Se usar outro PostgreSQL, ajuste `DATABASE_URL`. A API usa o prefixo `/api`; o health check publico esta em `GET /api/health`.
+
+## Autenticacao e rotas principais
+
+Crie uma conta em `POST /api/auth/register` com `name`, `email`, `password` (8 a 72 caracteres) e `role` (`student` ou `teacher`). `POST /api/auth/login` retorna `accessToken` e `user`. Envie `Authorization: Bearer <accessToken>` nas rotas protegidas.
+
+| Metodo | Rota | Acesso |
+| --- | --- | --- |
+| GET | `/api/auth/me` | autenticado |
+| POST, GET | `/api/classrooms` | professor cria; usuario lista suas turmas |
+| POST | `/api/classrooms/join` | aluno; recebe `{ "code": "..." }` |
+| GET | `/api/classrooms/:id/members` | professor dono |
+| POST, GET | `/api/exams` | professor cria; membro da turma consulta |
+| GET, PATCH, DELETE | `/api/exams/:id` | membro consulta; professor dono atualiza/cancela |
+| GET, POST | `/api/checklists` | aluno; itens privados por aluno |
+| PATCH, DELETE | `/api/checklists/:id` | dono do item |
+| GET | `/api/notifications` | autenticado |
+| PATCH | `/api/notifications/:id/read` | dono do aviso |
+
+`GET /api/exams` aceita `classroomId`, `status`, `from`, `to` e `search`. Materiais de prova usam `{ "title": "...", "url": "https://..." }`. Senhas sao protegidas com bcrypt e tokens expiram em 12 horas. Email e Web Push dependem de provedores externos e nao sao enviados por esta implementacao.
 
 ## Compile and run the project
 
